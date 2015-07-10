@@ -395,8 +395,8 @@ PHP_FUNCTION(exdef_has) {
  */
 
 PHP_INI_BEGIN()
-    STD_PHP_INI_ENTRY("exdef.directory",      "", PHP_INI_SYSTEM, OnUpdateLong, directory, zend_exdef_globals, exdef_globals)
-	STD_PHP_INI_ENTRY("exdef.suffix",      ".exdef.ini", PHP_INI_SYSTEM, OnUpdateLong, suffix, zend_exdef_globals, exdef_globals)
+    STD_PHP_INI_ENTRY("exdef.directory",      "", PHP_INI_SYSTEM, OnUpdateString, directory, zend_exdef_globals, exdef_globals)
+	STD_PHP_INI_ENTRY("exdef.suffix",      ".exdef.ini", PHP_INI_SYSTEM, OnUpdateString, suffix, zend_exdef_globals, exdef_globals)
 PHP_INI_END()
 
 /* }}} */
