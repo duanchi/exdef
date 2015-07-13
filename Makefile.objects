@@ -1,8 +1,0 @@
-exdef.lo: /Projects/PHP-Extensions/exdef/exdef.c
-	$(LIBTOOL) --mode=compile $(CC) -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/Projects/PHP-Extensions/exdef $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Projects/PHP-Extensions/exdef/exdef.c -o exdef.lo 
-$(phplibdir)/exdef.la: ./exdef.la
-	$(LIBTOOL) --mode=install cp ./exdef.la $(phplibdir)
-
-./exdef.la: $(shared_objects_exdef) $(EXDEF_SHARED_DEPENDENCIES)
-	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_exdef) $(EXDEF_SHARED_LIBADD)
-

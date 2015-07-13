@@ -58,14 +58,9 @@ PHP_MINFO_FUNCTION(exdef);
 /* {{{ zend_exdef_globals */
 ZEND_BEGIN_MODULE_GLOBALS(exdef)
 
-char *directory;
-char *suffix;
+char *ini_file;
 int   parse_err;
-#ifndef ZTS
-long   check_delay;
-time_t last_check;
-time_t directory_mtime;
-#endif
+int   gm_number;
 
 ZEND_END_MODULE_GLOBALS(exdef)
 /* }}} */
@@ -73,11 +68,6 @@ ZEND_END_MODULE_GLOBALS(exdef)
 /* {{{ extern exdef_globals */
 ZEND_EXTERN_MODULE_GLOBALS(exdef)
 /* }}} */
-
-BEGIN_EXTERN_C()
-PHPAPI zval *php_exdef_get(zend_string *name);
-PHPAPI int php_exdef_has(zend_string *name);
-END_EXTERN_C()
 
 
 #ifdef ZTS
