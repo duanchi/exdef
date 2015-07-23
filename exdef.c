@@ -76,6 +76,7 @@ static void php_exdef_register_constant(zval *key, zval *value) {
 
 	skey = estrndup(Z_STRVAL_P(key), Z_STRLEN_P(key));
 
+
 	switch(Z_TYPE_P(value)) {
 		case IS_LONG:
 			zend_register_long_constant(skey, strlen(skey), Z_LVAL_P(value), CONST_CS|CONST_PERSISTENT, EXDEF_G(gm_number));
@@ -185,7 +186,7 @@ PHP_MINIT_FUNCTION(exdef)
 				fh.filename = EXDEF_G(ini_file);
 				fh.type = ZEND_HANDLE_FP;
 				EXDEF_G(parse_err) = 0;
-				if (zend_parse_ini_file(&fh, 0, 0/* ZEND_INI_SCANNER_NORMAL */
+				if (zend_parse_ini_file(&fh, 0, 2/* ZEND_INI_SCANNER_TYPED */
 						, php_exdef_ini_parser_cb, (void *)&result) == FAILURE || EXDEF_G(parse_err)) {
 					if (!EXDEF_G(parse_err)) {
 						php_error(E_WARNING, "Parsing '%s' failed", EXDEF_G(ini_file));
